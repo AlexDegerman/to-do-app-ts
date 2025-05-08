@@ -15,7 +15,8 @@
   "dependencies": {
     "lucide-react": "^0.508.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "to-do-app-ts": "file:"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",

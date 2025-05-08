@@ -11,7 +11,7 @@ interface ToDoListProps {
 const ToDoList = ({ tasks, toggleComplete, deleteTask }: ToDoListProps) => {
 
   return (
-    <div>
+    <div className="task-list">
       {tasks.map(task => 
         <ToDoItem
         key={task.id}
