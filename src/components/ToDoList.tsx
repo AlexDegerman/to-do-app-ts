@@ -3,16 +3,19 @@ import ToDoItem from "./ToDoItem"
 
 interface ToDoListProps {
   tasks: Task[]
+  toggleComplete: (id: number) => void
 }
 
-const ToDoList = ({ tasks }: ToDoListProps) => {
+const ToDoList = ({ tasks, toggleComplete }: ToDoListProps) => {
 
   return (
     <div>
       {tasks.map(task => 
         <ToDoItem
         key={task.id}
-        task={task}/>
+        task={task}
+        toggleComplete={toggleComplete}
+        />
       )}
     </div>
   )
