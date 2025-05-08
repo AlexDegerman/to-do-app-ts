@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 import ToDoList from './components/ToDoList'
+import ToDoForm from './components/ToDoForm'
 
 export interface Task {
   id: number
@@ -14,10 +15,14 @@ const App = () => {
     { id: 2, text: "practice TypeScript", completed: false}
   ])
 
+  const addTask = (text: string) => {
+    setTasks([...tasks, { id: Date.now(), text, completed: false}])
+  }
+
   return (
     <div>
       <h1>To-do App</h1>
-      <p> add new task </p>
+      <ToDoForm addTask={addTask}/>
       <ToDoList tasks={tasks}/>
     </div>
   )
