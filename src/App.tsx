@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import ToDoList from './components/ToDoList'
 import ToDoForm from './components/ToDoForm'
@@ -10,10 +10,16 @@ export interface Task {
 }
 
 const App = () => {
-  const [tasks, setTasks] = useState<Task[]>([
-    { id: 1, text: "learn TypeScript", completed: false },
-    { id: 2, text: "practice TypeScript", completed: false}
-  ])
+  const loadTasks = (): Task[] => {
+    const savedTasks = localStorage.getItem("tasks")
+    return savedTasks ? JSON.parse(savedTasks) : []
+  }
+
+  const [tasks, setTasks] = useState<Task[]>(loadTasks)
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+  }, [tasks])
 
   const addTask = (text: string) => {
     setTasks([...tasks, { id: Date.now(), text, completed: false}])
