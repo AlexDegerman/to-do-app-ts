@@ -8,6 +8,13 @@ interface ToDoItemProps {
 }
 
 const ToDoItem = ({ task, toggleComplete, deleteTask }: ToDoItemProps) => {
+  const formatDate = (timestamp: number) => {
+    return new Date(timestamp).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+    })
+  }
 
   return (
     <div>
@@ -16,6 +23,7 @@ const ToDoItem = ({ task, toggleComplete, deleteTask }: ToDoItemProps) => {
       onChange={() => toggleComplete(task.id)}
       />
       <span>{task.text}</span>
+      <span>{formatDate(task.id)}</span>
       <button onClick={() => deleteTask(task.id)}><Trash2Icon/></button>
     </div>
   )
