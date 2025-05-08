@@ -18,6 +18,7 @@ const App = () => {
 
   const [tasks, setTasks] = useState<Task[]>(loadTasks)
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest")
+  const [filterStatus, setFilterStatus] = useState<"all" | "completed" | "uncompleted">("all")
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -40,13 +41,23 @@ const App = () => {
 
   const sortedTasks = [...tasks].sort((a, b) => sortOrder === "newest" ? b.id - a.id : a.id - b.id)
 
+  const filteredTasks = sortedTasks.filter(task => {
+    if (filterStatus === "completed") return task.completed
+    if (filterStatus === "uncompleted") return !task.completed
+    return true
+  })
+
   return (
     <div>
       <h1>To-do App</h1>
       <ToDoForm addTask={addTask}/>
-      <SortDropDown sortOrder={sortOrder} sortChange={(e) => setSortOrder(e.target.value as "newest" |"oldest")}
+      <SortDropDown
+      sortOrder={sortOrder}
+      sortChange={(e) => setSortOrder(e.target.value as "newest" |"oldest")}
+      filterStatus={filterStatus}
+      filterChange={(e) => setFilterStatus(e.target.value as "all" | "completed" | "uncompleted")}
       />
-      <ToDoList tasks={sortedTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
+      <ToDoList tasks={filteredTasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
     </div>
   )
 }
