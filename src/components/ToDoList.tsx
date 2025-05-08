@@ -4,9 +4,10 @@ import ToDoItem from "./ToDoItem"
 interface ToDoListProps {
   tasks: Task[]
   toggleComplete: (id: number) => void
+  deleteTask: (id: number) => void
 }
 
-const ToDoList = ({ tasks, toggleComplete }: ToDoListProps) => {
+const ToDoList = ({ tasks, toggleComplete, deleteTask }: ToDoListProps) => {
 
   return (
     <div>
@@ -15,6 +16,7 @@ const ToDoList = ({ tasks, toggleComplete }: ToDoListProps) => {
         key={task.id}
         task={task}
         toggleComplete={toggleComplete}
+        deleteTask={deleteTask}
         />
       )}
     </div>

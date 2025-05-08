@@ -26,11 +26,15 @@ const App = () => {
     console.log("completed status changed")
   }
 
+  const deleteTask = (taskId: number) => {
+    setTasks(tasks.filter(task => task.id !== taskId))
+  }
+
   return (
     <div>
       <h1>To-do App</h1>
       <ToDoForm addTask={addTask}/>
-      <ToDoList tasks={tasks} toggleComplete={toggleComplete}/>
+      <ToDoList tasks={tasks} toggleComplete={toggleComplete} deleteTask={deleteTask}/>
     </div>
   )
 }
