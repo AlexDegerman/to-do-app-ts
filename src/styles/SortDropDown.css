@@ -1,0 +1,10 @@
+.sort-filter-container {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+select {
+  padding: 5px;
+  border-radius: 5px;
+}

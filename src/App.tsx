@@ -32,7 +32,6 @@ const App = () => {
     setTasks(tasks.map(task => 
       task.id === taskId ? { ...task, completed: !task.completed } : task
     ))
-    console.log("completed status changed")
   }
 
   const deleteTask = (taskId: number) => {
@@ -48,7 +47,7 @@ const App = () => {
   })
 
   return (
-    <div>
+    <div className="app-container">
       <h1>To-do App</h1>
       <ToDoForm addTask={addTask}/>
       <SortDropDown

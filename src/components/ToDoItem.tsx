@@ -1,5 +1,6 @@
 import { Trash2Icon } from "lucide-react"
 import type { Task } from "../App"
+import '../styles/ToDoItem.css'
 
 interface ToDoItemProps {
   task: Task
@@ -17,14 +18,17 @@ const ToDoItem = ({ task, toggleComplete, deleteTask }: ToDoItemProps) => {
   }
 
   return (
-    <div>
-      <input type="checkbox"
+    <div className={`task-item ${task.completed ? "task-completed" : ""}`}>
+      <input 
+      type="checkbox"
       checked={task.completed}
       onChange={() => toggleComplete(task.id)}
       />
-      <span>{task.text}</span>
-      <span>{formatDate(task.id)}</span>
-      <button onClick={() => deleteTask(task.id)}><Trash2Icon/></button>
+      <div className="task-text">
+        <span>{task.text}</span>
+        <span className="task-date">{formatDate(task.id)}</span>
+      </div>
+      <button className="task-delete" onClick={() => deleteTask(task.id)}><Trash2Icon/></button>
     </div>
   )
 }

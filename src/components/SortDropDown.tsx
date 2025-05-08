@@ -1,3 +1,5 @@
+import '../styles/SortDropDown.css'
+
 interface SortDropDownProps {
   sortOrder: "newest" | "oldest"
   sortChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
@@ -8,7 +10,7 @@ interface SortDropDownProps {
 const SortDropDown = ({ sortOrder, sortChange, filterStatus, filterChange}: SortDropDownProps) => {
 
   return (
-    <div>
+    <div className="sort-filter-container">
         {/* Sorting Dropdown */}
       <div>
         <label htmlFor="sortOrder">Sort by:</label>

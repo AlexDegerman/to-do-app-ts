@@ -1,5 +1,6 @@
 import type { Task } from "../App"
 import ToDoItem from "./ToDoItem"
+import '../styles/ToDoList.css'
 
 interface ToDoListProps {
   tasks: Task[]
