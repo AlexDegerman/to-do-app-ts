@@ -1,0 +1,1 @@
+To-do app made with React and TypeScript featuring marking tasks as completed, sorting and filtering.
