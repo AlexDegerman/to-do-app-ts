@@ -1,28 +1,21 @@
-import type { Task } from "../App"
+import { useAppSelector } from "../store/hooks"
+import { selectSortedFilteredTasks } from "../store/todoSlice"
 import ToDoItem from "./ToDoItem"
 import '../styles/ToDoList.css'
 
-interface ToDoListProps {
-  tasks: Task[]
-  toggleComplete: (id: number) => void
-  deleteTask: (id: number) => void
-}
-
-const ToDoList = ({ tasks, toggleComplete, deleteTask }: ToDoListProps) => {
+const ToDoList = () => {
+  const tasks = useAppSelector(selectSortedFilteredTasks)
 
   return (
     <div className="task-list">
       {tasks.map(task => 
         <ToDoItem
-        key={task.id}
-        task={task}
-        toggleComplete={toggleComplete}
-        deleteTask={deleteTask}
+          key={task.id}
+          task={task}
         />
       )}
     </div>
   )
-
 }
 
 export default ToDoList
