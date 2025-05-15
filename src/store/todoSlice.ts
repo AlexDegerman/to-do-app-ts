@@ -1,22 +1,17 @@
 import { createSlice, type PayloadAction, createSelector } from '@reduxjs/toolkit'
-import { type RootState } from './types'
-
-export interface Task {
-  id: number
-  text: string
-  completed: boolean
-}
-
-interface ToDoState {
-  tasks: Task[]
-  sortOrder: "newest" | "oldest"
-  filterStatus: "all" | "completed" | "uncompleted"
-}
+import type { Task, ToDoState, RootState } from './types'
 
 // Load initial state from localStorage
 const loadTasks = (): Task[] => {
   const savedTasks = localStorage.getItem("tasks")
-  return savedTasks ? JSON.parse(savedTasks) : []
+  if (!savedTasks) return []
+  
+  try {
+    return JSON.parse(savedTasks)
+  } catch (error) {
+    console.error("Failed to parse tasks from localStorage:", error)
+    return []
+  }
 }
 
 const initialState: ToDoState = {
