@@ -2,7 +2,7 @@ import { Trash2Icon } from "lucide-react"
 import { useAppDispatch } from "../store/hooks"
 import { deleteTask, toggleComplete } from "../store/todoSlice"
 import '../styles/ToDoItem.css'
-import type { Task } from "../store/todoSlice"
+import type { Task } from "../store/types"
 
 interface ToDoItemProps {
   task: Task
