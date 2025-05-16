@@ -1,4 +1,4 @@
-import { createSlice, type PayloadAction, createSelector } from '@reduxjs/toolkit'
+import { createSlice, createSelector } from '@reduxjs/toolkit'
 import type { Task, ToDoState, RootState } from './types'
 
 // Load initial state from localStorage
@@ -25,7 +25,7 @@ const todoSlice = createSlice({
   initialState,
   reducers: {
     // Add a new task
-    addTask: (state, action: PayloadAction<string>) => {
+    addTask: (state, action) => {
       const newTask: Task = {
         id: Date.now(),
         text: action.payload,
@@ -35,7 +35,7 @@ const todoSlice = createSlice({
     },
     
     // Toggle completion status of a task
-    toggleComplete: (state, action: PayloadAction<number>) => {
+    toggleComplete: (state, action) => {
       const task = state.tasks.find(task => task.id === action.payload)
       if (task) {
         task.completed = !task.completed
@@ -43,17 +43,17 @@ const todoSlice = createSlice({
     },
     
     // Delete a task
-    deleteTask: (state, action: PayloadAction<number>) => {
+    deleteTask: (state, action) => {
       state.tasks = state.tasks.filter(task => task.id !== action.payload)
     },
     
     // Set sort order
-    setSortOrder: (state, action: PayloadAction<"newest" | "oldest">) => {
+    setSortOrder: (state, action) => {
       state.sortOrder = action.payload
     },
     
     // Set filter status
-    setFilterStatus: (state, action: PayloadAction<"all" | "completed" | "uncompleted">) => {
+    setFilterStatus: (state, action) => { 
       state.filterStatus = action.payload
     }
   }
