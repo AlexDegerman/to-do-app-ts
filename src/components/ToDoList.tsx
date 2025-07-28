@@ -1,14 +1,13 @@
 import { useAppSelector } from "../store/hooks"
 import { selectSortedFilteredTasks } from "../store/todoSlice"
 import ToDoItem from "./ToDoItem"
-import '../styles/ToDoList.css'
 
 const ToDoList = () => {
   const tasks = useAppSelector(selectSortedFilteredTasks)
 
   return (
-    <div className="task-list">
-      {tasks.map(task => 
+    <div className="mt-5 overflow-y-auto scrollbar-thin scrollbar-thumb-[#FF6F00] scrollbar-track-[#FFF3E0]">
+      {tasks.map(task =>
         <ToDoItem
           key={task.id}
           task={task}

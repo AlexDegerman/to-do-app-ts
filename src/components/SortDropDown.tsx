@@ -1,4 +1,3 @@
-import '../styles/SortDropDown.css'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { setSortOrder, setFilterStatus } from '../store/todoSlice'
 
@@ -8,7 +7,7 @@ const SortDropDown = () => {
   const filterStatus = useAppSelector(state => state.todo.filterStatus)
 
   return (
-    <div className="sort-filter-container">
+    <div className="flex mt-5 justify-between">
       {/* Sorting Dropdown */}
       <div>
         <label htmlFor="sortOrder">Sort by:</label>
@@ -16,12 +15,12 @@ const SortDropDown = () => {
           id="sortOrder"
           value={sortOrder}
           onChange={(e) => dispatch(setSortOrder(e.target.value as "newest" | "oldest"))}
+          className="p-[5px] rounded-[5px] ml-2 border border-gray-300 bg-white"
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
         </select>
       </div>
-
       {/* Filtering Dropdown */}
       <div>
         <label htmlFor="filterStatus">Show:</label>
@@ -31,6 +30,7 @@ const SortDropDown = () => {
           onChange={(e) =>
             dispatch(setFilterStatus(e.target.value as "all" | "completed" | "uncompleted"))
           }
+          className="p-[5px] rounded-[5px] ml-2 border border-gray-300 bg-white"
         >
           <option value="all">All</option>
           <option value="completed">Completed</option>
