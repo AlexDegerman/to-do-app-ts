@@ -6,7 +6,7 @@ const ToDoList = () => {
   const tasks = useAppSelector(selectSortedFilteredTasks)
 
   return (
-    <div className="mt-5 overflow-y-auto scrollbar-thin scrollbar-thumb-[#FF6F00] scrollbar-track-[#FFF3E0]">
+    <div className="mt-5 overflow-y-auto scrollbar-thin scrollbar-thumb-[#FF6F00]scrollbar-track-[#FFF3E0]">
       {tasks.map(task =>
         <ToDoItem
           key={task.id}
