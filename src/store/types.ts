@@ -1,3 +1,5 @@
+import { store } from './index'
+
 export interface Task {
   id: number
   text: string
@@ -14,4 +16,4 @@ export interface RootState {
   todo: ToDoState
 }
 
-export type AppDispatch = any
+export type AppDispatch = typeof store.dispatch
