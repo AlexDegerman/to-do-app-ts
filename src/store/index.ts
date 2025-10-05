@@ -7,7 +7,7 @@ const listenerMiddleware = createListenerMiddleware()
 // Listen for task-modifying actions
 listenerMiddleware.startListening({
   matcher: isAnyOf(addTask, toggleComplete, deleteTask),
-  effect: (action, listenerApi) => {
+  effect: (_action, listenerApi) => {
     try {
       const state = listenerApi.getState() as { todo: { tasks: unknown } }
       const { tasks } = state.todo
