@@ -18,7 +18,7 @@ A straightforward and efficient task management application for creating, organi
 
 ## 🔧 Tech Stack
 **Frontend:** React • TypeScript • Vite • Tailwind CSS  
-**State Management:** Redux  
+**State Management:** Redux Toolkit
 **Testing:** Vitest  
 
 ## 🚀 Installation & Setup
